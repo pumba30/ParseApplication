@@ -14,6 +14,7 @@ public class ParseSiteDemo {
         ParseBashIm parseBashIm = new ParseBashIm();
         ArrayList<String> list = new ArrayList<String>();
 
+        System.out.println("Введите номер страницы: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 
@@ -30,7 +31,7 @@ public class ParseSiteDemo {
             list = parseBashIm.getQuotes();
             int lengthList = list.size();
             for (int i = 0; i < lengthList; i++) {
-                System.out.println("##" + (i + 1) + " ########\n"
+                System.out.println("=" + (i + 1) + " ########\n"
                         + list.get(i) + "\n###################\n");
             }
         }
