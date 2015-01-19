@@ -35,7 +35,7 @@ public class ParseBashIm {
     }
 
     //установка номера страницы сайта , которую надо распарсить,
-    //поумолчанию парсит главную сайта
+    //по умолчанию парсит главную сайта
     public void setPage(int page) {
         this.page = page;
     }
@@ -71,11 +71,14 @@ public class ParseBashIm {
         if (buff.length() > 0) {
             Pattern pattern = Pattern.compile(regexp);
             Matcher matcher = pattern.matcher(buff);
-            String res = "";
             while (matcher.find()) {
-                res = matcher.group(1);
-                res = res.replace("<br />", "/n");
+                String res = matcher.group(1);
+                res = res.replaceAll( "&lt;", "" );
+                res = res.replaceAll("<br />", "\n");
                 res = res.replaceAll("&quot;", "");
+                res = res.replaceAll("&gt;", "");
+
+
                 quotes.add(res);
             }
         }
