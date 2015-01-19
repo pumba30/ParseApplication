@@ -73,12 +73,10 @@ public class ParseBashIm {
             Matcher matcher = pattern.matcher(buff);
             while (matcher.find()) {
                 String res = matcher.group(1);
-                res = res.replaceAll( "&lt;", "" );
+                res = res.replaceAll("&lt;", "");
                 res = res.replaceAll("<br />", "\n");
                 res = res.replaceAll("&quot;", "");
                 res = res.replaceAll("&gt;", "");
-
-
                 quotes.add(res);
             }
         }
