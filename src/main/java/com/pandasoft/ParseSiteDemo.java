@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * Created by pumba30 on 19.01.2015.
  */
 public class ParseSiteDemo {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String line;
         ParseBashIm parseBashIm = new ParseBashIm();
         ArrayList<String> list = new ArrayList<String>();
@@ -18,23 +18,30 @@ public class ParseSiteDemo {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 
-        //TODO проверка ввода (должны быть числа)
-        while ((line = reader.readLine()) != null) {
-            if (line.equalsIgnoreCase("exit")) {
-                System.exit(0);
-            }
+        //TODO проверка ввода? (должны быть числа)
+        try {
+            while ((line = reader.readLine()) != null) {
+                if (line.equalsIgnoreCase("exit")) {
+                    System.exit(0);
+                }
 
-            int numberPage = Integer.parseInt(line);
+                int numberPage = Integer.parseInt(line);
 
-            parseBashIm.setPage(numberPage);
-            System.out.println("---------PAGE " + numberPage + " --------------------");
-            list = parseBashIm.getQuotes();
-            int lengthList = list.size();
-            for (int i = 0; i < lengthList; i++) {
-                System.out.println("=" + (i + 1) + " ########\n"
-                        + list.get(i) + "\n###################\n");
+                parseBashIm.setPage(numberPage);
+                System.out.println("---------PAGE " + numberPage + " --------------------");
+                list = parseBashIm.getQuotes();
+                int lengthList = list.size();
+                for (int i = 0; i < lengthList; i++) {
+                    System.out.println("=" + (i + 1) + " ########\n"
+                            + list.get(i) + "\n###################\n");
+                }
             }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
 
     }
 }
